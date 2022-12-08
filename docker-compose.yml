@@ -1,44 +1,44 @@
 version: '2'
 services:
   7dtdserver:
-    image: vinanrra/7dtd-server
     container_name: 7dtdserver
     environment:
-      - START_MODE=1 #Change between START MODES
-      - VERSION=stable # Change between 7 days to die versions
-      - PUID=1000 # Remember to use same as your user
-      - PGID=1000 # Remember to use same as your user
-      - TimeZone=Europe/Madrid # Optional - Change Timezone
-      - TEST_ALERT=NO # Optional - Send a test alert
-      - UPDATE_MODS=NO # Optional - This will allow mods to be update on start, each mod also need to have XXXX_UPDATE=YES to update on start
-      - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
-      - ALLOC_FIXES_UPDATE # Optional - Update Allocs Fixes before server start
-      - UNDEAD_LEGACY=NO # Optional - Install Undead Legacy mod
-      - UNDEAD_LEGACY_VERSION=stable # Optional - Undead Legacy version
-      - UNDEAD_LEGACY_UPDATE=NO # Optional - Update Undead Legacy mod before server start
-      - ENZOMBIES=NO # Optional - Install EnZombies mod
-      - ENZOMBIES_ADDON_SNUFKIN=NO # Optional - Install EnZombies addon mod
-      - ENZOMBIES_ADDON_ROBELOTO=NO # Optional - Install EnZombies addon mod
-      - ENZOMBIES_ADDON_NONUDES=NO # Optional - Install EnZombies addon mod
-      - ENZOMBIES_UPDATE=NO # Optional - Update EnZombies mod and addons before server start
-      - CPM=NO # Optional - CSMM Patron's Mod (CPM)
-      - CPM_UPDATE=NO # Optional - Update BepInEx before server start
-      - BEPINEX=NO # Optional - BepInEx
-      - BEPINEX_UPDATE=NO # Optional - Update BepInEx before server start
-      - BACKUP=NO # Optional - Backup server at 5 AM
-      - MONITOR=NO # Optional - Keeps server up if crash
-    volumes:
-      - /path/to/folder/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
-      - /path/to/folder/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver
-      - /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/ # Optional - serverfiles folder
-      - /path/to/folder/log:/home/sdtdserver/log/ # Optional - Logs folder
-      - /path/to/folder/backups:/home/sdtdserver/lgsm/backup/ # Optional - If BAKCUP=NO, backups folder
+    - START_MODE=${START_MODE}
+    - VERSION=${VERSION}
+    - PUID=${PUID}
+    - PGID=${PGID}
+    - TimeZone=${TimeZone}
+    - TEST_ALERT=${TEST_ALERT}
+    - UPDATE_MODS=${UPDATE_MODS}
+    - ALLOC_FIXES=${ALLOC_FIXES}
+    - ALLOC_FIXES_UPDATE
+    - UNDEAD_LEGACY=${UNDEAD_LEGACY}
+    - UNDEAD_LEGACY_VERSION=${UNDEAD_LEGACY_VERSION}
+    - UNDEAD_LEGACY_UPDATE=${UNDEAD_LEGACY_UPDATE}
+    - ENZOMBIES=${ENZOMBIES}
+    - ENZOMBIES_ADDON_SNUFKIN=${ENZOMBIES_ADDON_SNUFKIN}
+    - ENZOMBIES_ADDON_ROBELOTO=${ENZOMBIES_ADDON_ROBELOTO}
+    - ENZOMBIES_ADDON_NONUDES=${ENZOMBIES_ADDON_NONUDES}
+    - ENZOMBIES_UPDATE=${ENZOMBIES_UPDATE}
+    - CPM=${CPM}
+    - CPM_UPDATE=${CPM_UPDATE}
+    - BEPINEX=${BEPINEX}
+    - BEPINEX_UPDATE=${BEPINEX_UPDATE}
+    - BACKUP=${BACKUP}
+    - MONITOR=${MONITOR}
+    image: vinanrra/7dtd-server
     ports:
-      - 26900:26900/tcp # Default game ports
-      - 26900:26900/udp # Default game ports
-      - 26901:26901/udp # Default game ports
-      - 26902:26902/udp # Default game ports
-      - 8080:8080/tcp # OPTIONAL - WEBADMIN
-      - 8081:8081/tcp # OPTIONAL - TELNET
-      - 8082:8082/tcp # OPTIONAL - WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
-    restart: unless-stopped # INFO - NEVER USE WITH START_MODE=4 or START_MODE=0
+    - 26900:26900/tcp
+    - 26900:26900/udp
+    - 26901:26901/udp
+    - 26902:26902/udp
+    - 8080:8080/tcp
+    - 8081:8081/tcp
+    - 8082:8082/tcp
+    restart: unless-stopped
+    volumes:
+    - /path/to/folder/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
+    - /path/to/folder/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver
+    - /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/
+    - /path/to/folder/log:/home/sdtdserver/log/
+    - /path/to/folder/backups:/home/sdtdserver/lgsm/backup/
